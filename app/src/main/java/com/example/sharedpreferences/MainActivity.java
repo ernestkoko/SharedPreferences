@@ -48,18 +48,25 @@ public class MainActivity extends AppCompatActivity {
         //initialise the shared preferences
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
+        //getting the data from the shared preferences
+        mCount = mPreferences.getInt(COUNT_KEY, 0);
+        mColor = mPreferences.getInt(COLOR_KEY, mColor);
+        //update the value of the main text
+        mShowCountTextView.setText(String.format("%s", mCount));
+        mShowCountTextView.setBackgroundColor(mColor);
+
 
         // Restore the saved instance state.
-        if (savedInstanceState != null) {
-
-            mCount = savedInstanceState.getInt(COUNT_KEY);
-            if (mCount != 0) {
-                mShowCountTextView.setText(String.format("%s", mCount));
-            }
-
-            mColor = savedInstanceState.getInt(COLOR_KEY);
-            mShowCountTextView.setBackgroundColor(mColor);
-        }
+//        if (savedInstanceState != null) {
+//
+//            mCount = savedInstanceState.getInt(COUNT_KEY);
+//            if (mCount != 0) {
+//                mShowCountTextView.setText(String.format("%s", mCount));
+//            }
+//
+//            mColor = savedInstanceState.getInt(COLOR_KEY);
+//            mShowCountTextView.setBackgroundColor(mColor);
+//        }
     }
 
     @Override
